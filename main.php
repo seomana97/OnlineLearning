@@ -1,6 +1,5 @@
 <?php
     require_once "config.php"; 
-    require_once "lesson.php"; 
 
     session_start();
     $_SESSION['URL'] = "https://".$_SERVER['HTTP_HOST'];
@@ -8,7 +7,7 @@
     $modules = array();
     $mlesson = array();
     $assessments = array();
-
+    $_SESSION['module'] = '';
     if(!isset($_SESSION['username'])){
         header("location: index.php");
     }
@@ -123,7 +122,7 @@
                             foreach ($assessments as $data) {
                                 if(in_array($_SESSION['module'], $data))
                                     echo "
-                                        <p><a href='".$_SESSION['URL'].$data[3]."'>Download: ".$data[2]."</a></p>
+                                        <p><a href='".$_SESSION['URL'].$data[3]."' target='_blank'>Download: ".$data[2]."</a></p>
                                         <hr/>
                                     ";
                             }
